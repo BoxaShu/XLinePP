@@ -2,14 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-using App = Autodesk.AutoCAD.ApplicationServices;
-using cad = Autodesk.AutoCAD.ApplicationServices.Application;
 using Db = Autodesk.AutoCAD.DatabaseServices;
-using Ed = Autodesk.AutoCAD.EditorInput;
-using Gem = Autodesk.AutoCAD.Geometry;
-using Rtm = Autodesk.AutoCAD.Runtime;
+
 
 namespace xline_pp
 {
@@ -17,15 +12,17 @@ namespace xline_pp
     {
         private Db.LineWeight _weight = Db.LineWeight.LineWeight009;
         private int _colorInd = 10;
+        private string _layerName = "xline";
 
         public Settings()
         {
         }
 
-        public Settings(int colorInd, Db.LineWeight weight)
+        public Settings(int colorInd, Db.LineWeight weight, string layerName)
         {
             this.colorInd = colorInd;
             this.weight = weight;
+            this.layerName = layerName;
         }
 
 
@@ -39,6 +36,12 @@ namespace xline_pp
         {
             get { return _weight; }
             set { _weight = value; }
+        }
+
+        public string layerName
+        {
+            get { return _layerName; }
+            set { _layerName = value; }
         }
 
 
